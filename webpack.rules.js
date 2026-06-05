@@ -1,0 +1,23 @@
+module.exports = [
+  {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          ['@babel/preset-env', { targets: { electron: '28' } }],
+          '@babel/preset-react',
+        ],
+      },
+    },
+  },
+  {
+    test: /\.css$/,
+    use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+  },
+  {
+    test: /\.(png|jpe?g|gif|svg|ico)$/i,
+    type: 'asset/resource',
+  },
+];

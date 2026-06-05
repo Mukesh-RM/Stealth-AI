@@ -1,0 +1,243 @@
+:root {
+  --bg-primary: rgba(12, 12, 16, 0.92);
+  --bg-secondary: rgba(22, 22, 30, 0.95);
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --text-primary: #f1f0ff;
+  --text-secondary: #9ca3af;
+  --success: #10b981;
+  --border: rgba(124, 58, 237, 0.3);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+#root {
+  height: 100vh;
+  background: transparent;
+}
+
+.overlay-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0c0c16f0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  -webkit-app-region: no-drag;
+  contain: layout style paint;
+}
+
+.drag-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.drag-bar button {
+  -webkit-app-region: no-drag;
+}
+
+.audio-bars {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 14px;
+}
+
+.audio-bar {
+  width: 3px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: height 0.1s;
+}
+
+.audio-bar.active {
+  background: var(--success);
+}
+
+.rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  margin-right: 4px;
+}
+
+.rec-dot.recording {
+  background: var(--success);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.brand-title {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.win-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.win-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.panel {
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.panel-body {
+  padding: 0 14px 12px;
+  max-height: 140px;
+  overflow-y: auto;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.answer-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.answer-header {
+  padding: 10px 14px 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-light);
+}
+
+.answer-body {
+  flex: 1;
+  padding: 0 14px 12px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+.answer-body.streaming {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent-light);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hotkey-bar {
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.hotkey-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.meta-time {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.action-btn {
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: rgba(124, 58, 237, 0.35);
+}
+
+.hotkey-hints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.hotkey-hints kbd {
+  color: var(--accent-light);
+  font-family: inherit;
+}
